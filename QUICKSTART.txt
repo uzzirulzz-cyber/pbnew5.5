@@ -1,0 +1,30 @@
+
+╔══════════════════════════════════════════════════════════════════╗
+║           PLAYBEAT DIGITAL — DEPLOYMENT QUICK REF               ║
+╠══════════════════════════════════════════════════════════════════╣
+║                                                                  ║
+║  🖥️  RENDER (Backend)                                           ║
+║  ─────────────────────────────────────────────────────────────  ║
+║  Build:  npm install && npx prisma generate && npm run build   ║
+║  Start:  npm start  →  node dist/server.js                      ║
+║  Port:   Render auto-sets PORT env var                         ║
+║                                                                  ║
+║  🌐 VERCEL (Frontend)                                           ║
+║  ─────────────────────────────────────────────────────────────  ║
+║  Framework: Next.js                                              ║
+║  Root Dir:  frontend                                             ║
+║  Build:     npm run build                                        ║
+║  Output:    .next                                                ║
+║                                                                  ║
+║  🔗 KEY ENV VARS                                                 ║
+║  ─────────────────────────────────────────────────────────────  ║
+║  NEXT_PUBLIC_API_URL=https://playbeat-api.onrender.com         ║
+║  DATABASE_URL=postgresql://neondb_owner:...neon.tech/neondb    ║
+║  JWT_SECRET=your-32-char-secret-key                              ║
+║                                                                  ║
+║  🗄️  DATABASE MIGRATION                                          ║
+║  ─────────────────────────────────────────────────────────────  ║
+║  npx prisma migrate deploy                                       ║
+║  npx prisma db seed                                              ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
