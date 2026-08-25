@@ -65,7 +65,7 @@ Click **Deploy**. Vercel will build and deploy automatically.
 NODE_ENV=production
 PORT=5000
 FRONTEND_URL=https://playbeat-digital.vercel.app
-DATABASE_URL=postgresql://neondb_owner:npg_7PcHuOnXFyg5@ep-odd-butterfly-axizldmn-pooler.c-4.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+DATABASE_URL=<your Neon PostgreSQL connection string>
 JWT_SECRET=your-super-secret-32-char-key-here!!!
 JWT_REFRESH_SECRET=another-super-secret-32-char-key!!
 STRIPE_SECRET_KEY=sk_live_...

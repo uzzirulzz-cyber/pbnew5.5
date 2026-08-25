@@ -73,9 +73,9 @@ if [ -z "$SERVICE_ID" ]; then
       {"key":"NODE_ENV","value":"production"},
       {"key":"PORT","value":"10000"},
       {"key":"FRONTEND_URL","value":"https://playbeat-digital.vercel.app"},
-      {"key":"DATABASE_URL","value":"postgresql://neondb_owner:npg_7PcHuOnXFyg5@ep-odd-butterfly-axizldmn-pooler.c-4.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"},
-      {"key":"JWT_SECRET","value":"playbeat-super-secret-jwt-key-2024-change-me"},
-      {"key":"JWT_REFRESH_SECRET","value":"playbeat-refresh-secret-key-2024-change-me"}
+      {"key":"DATABASE_URL","value":"${DATABASE_URL}"},
+      {"key":"JWT_SECRET","value":"${JWT_SECRET}"},
+      {"key":"JWT_REFRESH_SECRET","value":"${JWT_REFRESH_SECRET}"}
     ]
   }'
 
