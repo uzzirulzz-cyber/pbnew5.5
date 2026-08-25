@@ -2,14 +2,21 @@
 # Simple Render deployment via curl
 # Usage: ./render-deploy.sh
 
-RENDER_TOKEN="rnd_Rw95UAgAjUiGXoA8dGfY9zDGPfdS"
+if [ -z "$RENDER_TOKEN" ] || [ -z "$DATABASE_URL" ] || [ -z "$JWT_SECRET" ] || [ -z "$JWT_REFRESH_SECRET" ]; then
+  echo "Set RENDER_TOKEN, DATABASE_URL, JWT_SECRET, and JWT_REFRESH_SECRET in your environment before running this script."
+  exit 1
+fi
 
 echo "Creating Render Web Service..."
 
-curl -X POST https://api.render.com/v1/services   -H "Authorization: Bearer $RENDER_TOKEN"   -H "Content-Type: application/json"   -d '{
+payload=$(python3 - <<'PY'
+import json
+import os
+
+print(json.dumps({
     "type": "web_service",
     "name": "playbeat-api",
-    "repo": "https://github.com/uzzirulzz-cyber/new1111",
+    "repo": "https://github.com/uzzirulzz-cyber/pbnew5.5",
     "branch": "main",
     "rootDir": "backend",
     "runtime": "node",
@@ -20,8 +27,15 @@ curl -X POST https://api.render.com/v1/services   -H "Authorization: Bearer $REN
       {"key":"NODE_ENV","value":"production"},
       {"key":"PORT","value":"10000"},
       {"key":"FRONTEND_URL","value":"https://playbeat-digital.vercel.app"},
-      {"key":"DATABASE_URL","value":"postgresql://neondb_owner:npg_7PcHuOnXFyg5@ep-odd-butterfly-axizldmn-pooler.c-4.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"},
-      {"key":"JWT_SECRET","value":"playbeat-super-secret-key-32chars-long"},
-      {"key":"JWT_REFRESH_SECRET","value":"playbeat-refresh-secret-key-32chars"}
+      {"key":"DATABASE_URL","value":os.environ["DATABASE_URL"]},
+      {"key":"JWT_SECRET","value":os.environ["JWT_SECRET"]},
+      {"key":"JWT_REFRESH_SECRET","value":os.environ["JWT_REFRESH_SECRET"]}
     ]
-  }'
+}))
+PY
+)
+
+curl -X POST https://api.render.com/v1/services \
+  -H "Authorization: Bearer $RENDER_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d "$payload"

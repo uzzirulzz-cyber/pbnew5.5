@@ -49,9 +49,9 @@ Open terminal in the `new1111` folder and run:
 NODE_ENV=production
 PORT=10000
 FRONTEND_URL=https://playbeat-digital.vercel.app
-DATABASE_URL=postgresql://neondb_owner:npg_7PcHuOnXFyg5@ep-odd-butterfly-axizldmn-pooler.c-4.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
-JWT_SECRET=playbeat-super-secret-key-32chars-long-2024
-JWT_REFRESH_SECRET=playbeat-refresh-secret-key-32chars-long-2024
+DATABASE_URL=<your Neon PostgreSQL connection string>
+JWT_SECRET=<generate a strong random secret>
+JWT_REFRESH_SECRET=<generate a different strong random secret>
 REDIS_HOST=localhost
 REDIS_PORT=6379
 ```
